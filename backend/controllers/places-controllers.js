@@ -5,22 +5,6 @@ const HttpError = require("../models/http-error");
 const getCoordinatesForAddress = require("../util/location");
 const Place = require("../models/place");
 
-let DUMMY_PLACES = [
-  {
-    id: "p1",
-    title: "Empire State Building",
-    description: "One of the most famous sky scrapers in the world!",
-    imageUrl:
-      "https://lh5.googleusercontent.com/p/AF1QipOW6JzJtnnFqbLVRU62CM7sPdr60I0bBPX0hJw7=w408-h272-k-no",
-    address: "20 W 34th St, New York, NY 10001, United States",
-    location: {
-      lat: 40.7484405,
-      lng: -73.9878531
-    },
-    creator: "u1"
-  }
-];
-
 const getPlaceById = async (req, res, next) => {
   const placeId = req.params.pid;
 
