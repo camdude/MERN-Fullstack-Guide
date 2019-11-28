@@ -1,22 +1,12 @@
-const uuid = require("uuid/v4");
 const { validationResult } = require("express-validator");
 
 const HttpError = require("../models/http-error");
 const User = require("../models/user");
 
-let DUMMY_USERS = [
-  {
-    id: "u1",
-    name: "Cameron Clifford",
-    email: "test@test.com",
-    password: "testers"
-  }
-];
-
 const getUsers = async (req, res, next) => {
   let users;
   try {
-    users = await User.find({}, '-password');
+    users = await User.find({}, "-password");
   } catch (err) {
     const error = new HttpError(
       "Fetching users failed, please try again later.",
@@ -38,7 +28,7 @@ const signup = async (req, res, next) => {
     return next(error);
   }
 
-  const { name, email, password, places } = req.body;
+  const { name, email, password } = req.body;
 
   let existingUser;
   try {
@@ -65,7 +55,7 @@ const signup = async (req, res, next) => {
     image:
       "https://lh3.googleusercontent.com/-R9WM330AAuE/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rdmXJU0DwRj4lgYyT5ExCyGLUSs8Q.CMID/s192-c/photo.jpg",
     password,
-    places
+    places: []
   });
 
   try {

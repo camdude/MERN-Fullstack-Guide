@@ -27,13 +27,14 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect('mongodb+srv://cameron:mXMRdFJkMfrCmBkc@cluster0-oevkj.mongodb.net/places?retryWrites=true&w=majority')
+  .connect(
+    "mongodb+srv://cameron:mXMRdFJkMfrCmBkc@cluster0-oevkj.mongodb.net/places?retryWrites=true&w=majority"
+  )
   .then(() => {
-    console.log('Database Connected');
-    
-    app.listen(5000);
-    console.log('Now listening on port 5000');
+    console.log("[server]", "Database Connected");
 
+    app.listen(5000);
+    console.log("[server]", "Now listening on port 5000");
   })
   .catch(err => {
     console.log(err);
